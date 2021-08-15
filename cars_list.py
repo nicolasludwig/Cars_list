@@ -1,5 +1,4 @@
 import os
-import time
 
 class Carros:
     modelo=""
@@ -12,7 +11,10 @@ class Carros:
         self.cor=cor
         self.ano=ano
     def printa(self):
-        print(self.modelo)
+            print("Modelo.....: ",self.modelo)
+            print("Marca......: ",self.marca)
+            print("Cor........: ",self.cor)
+            print("Ano........: ",self.ano)
 
 def menu():
     opcao = 1
@@ -30,22 +32,22 @@ def menu():
         elif (opcao == '2'):
             alteraCarro()
         elif (opcao == '3'):
-            break
+            listaTudo()
         elif (opcao == '4'):
-            break
+            listaEspecifico()
         elif (opcao == '5'):
             break
         elif (opcao == '6'):
             break
         else:
             print("Digite um valor válido!")
-            time.sleep(3)
+            input("\n*** ENTER PARA RECOMEÇAR ***")
 
 def addCarro():
     os.system('cls')
     flag=0
     while (flag < 1):
-        mod=input("Modelo: ")
+        mod=input("Modelo.....: ")
         if len(listCarros)>0:
             for i in range(0,len(listCarros)):
                 if listCarros[i].modelo==mod:
@@ -55,13 +57,13 @@ def addCarro():
                     flag=1
         else:
             flag=1
-    mar=input("Marca: ")
-    cor=input("Cor: ")
-    ano=input("Ano: ")
+    mar=input("Marca......: ")
+    cor=input("Cor........: ")
+    ano=input("Ano........: ")
     car=Carros(mod,mar,cor,ano)
     listCarros.append(car)
     os.system('cls')
-    print ("Adicionado na lista:\nModelo:",car.modelo,"\nMarca:",car.marca,"\nCor:",car.cor,"\nAno:",car.ano)
+    print ("Adicionado na lista:\nModelo.....:",car.modelo,"\nMarca......:",car.marca,"\nCor........:",car.cor,"\nAno........:",car.ano)
     print ("Tamanho da lista:",len(listCarros))
     input("\n*** ENTER PARA VOLTAR AO MENU ***")
 
@@ -69,7 +71,7 @@ def alteraCarro():
     os.system('cls')
     try:
         num=input("Digite o número do carro que deseja alterar: ")
-        if int(num) <= len(listCarros):
+        if (int(num) <= len(listCarros)) and int(num) > 0:
             print("O que deseja alterar?")
             print("1. Modelo")
             print("2. Marca")
@@ -93,6 +95,30 @@ def alteraCarro():
             print("Número do carro inexistente!")
     except:
         print("Digite apenas números!")
+    input("\n*** ENTER PARA VOLTAR AO MENU ***")
+
+def listaTudo():
+    os.system('cls')
+    if len(listCarros) > 0:
+        for i in range (0,len(listCarros)):
+            print("CARRO ",i+1,":")
+            listCarros[i].printa()
+            if (i+1) < len(listCarros):
+                print("-----------------------------")
+    else:
+        print("Lista está vazia!")
+    input("\n*** ENTER PARA VOLTAR AO MENU ***")
+
+def listaEspecifico():
+    os.system('cls')
+    try:
+        print ("Nº de carros na lista:",len(listCarros))
+        num=input("Digite o número do carro para mostrar: ")
+        if (int(num) <= len(listCarros)) and int(num) > 0:
+            print("\nCARRO ",int(num),":")
+        listCarros[int(num)-1].printa()
+    except:
+        print("Digite um número válido!")
     input("\n*** ENTER PARA VOLTAR AO MENU ***")
 
 listCarros=[]
