@@ -11,10 +11,10 @@ class Carros:
         self.cor=cor
         self.ano=ano
     def printa(self):
-            print("Modelo.....: ",self.modelo)
-            print("Marca......: ",self.marca)
-            print("Cor........: ",self.cor)
-            print("Ano........: ",self.ano)
+        print("Modelo.....: ",self.modelo)
+        print("Marca......: ",self.marca)
+        print("Cor........: ",self.cor)
+        print("Ano........: ",self.ano)
 
 def menu():
     opcao = '1'
@@ -65,7 +65,7 @@ def addCarro():
     listCarros.append(car)
     os.system('cls')
     print ("Adicionado na lista:\nModelo.....:",car.modelo,"\nMarca......:",car.marca,"\nCor........:",car.cor,"\nAno........:",car.ano)
-    print ("Tamanho da lista:",len(listCarros))
+    print ("\nTamanho da lista:",len(listCarros))
     input("\n*** ENTER PARA VOLTAR AO MENU ***")
 
 def alteraCarro():
