@@ -70,33 +70,36 @@ def addCarro():
 
 def alteraCarro():
     os.system('cls')
-    print ("Nº de carros na lista:",len(listCarros))
-    try:
-        num=input("Digite o número do carro que deseja alterar: ")
-        if (int(num) <= len(listCarros)) and int(num) > 0:
-            print("O que deseja alterar?")
-            print("1. Modelo")
-            print("2. Marca")
-            print("3. Cor")
-            print("4. Ano")
-            opcao=input("Digite: ")
-            if (opcao == '1'):
-                opcao=input("Novo modelo: ")
-                listCarros[int(num)-1].modelo=opcao
-            elif (opcao == '2'):
-                opcao=input("Nova marca: ")
-                listCarros[int(num)-1].marca=opcao
-            elif (opcao == '3'):
-                opcao=input("Nova cor: ")
-                listCarros[int(num)-1].cor=opcao
-            elif (opcao == '4'):
-                opcao=input("Novo ano: ")
-                listCarros[int(num)-1].ano=opcao
-            print("Dados alterados com sucesso!")
-        else:
-            print("Número do carro inexistente!")
-    except:
-        print("Digite apenas números!")
+    if len(listCarros) > 0:
+        print ("Nº de carros na lista:",len(listCarros))
+        try:
+            num=input("Digite o número do carro que deseja alterar: ")
+            if (int(num) <= len(listCarros)) and int(num) > 0:
+                print("O que deseja alterar?")
+                print("1. Modelo")
+                print("2. Marca")
+                print("3. Cor")
+                print("4. Ano")
+                opcao=input("Digite: ")
+                if (opcao == '1'):
+                    opcao=input("Novo modelo: ")
+                    listCarros[int(num)-1].modelo=opcao
+                elif (opcao == '2'):
+                    opcao=input("Nova marca: ")
+                    listCarros[int(num)-1].marca=opcao
+                elif (opcao == '3'):
+                    opcao=input("Nova cor: ")
+                    listCarros[int(num)-1].cor=opcao
+                elif (opcao == '4'):
+                    opcao=input("Novo ano: ")
+                    listCarros[int(num)-1].ano=opcao
+                print("Dados alterados com sucesso!")
+            else:
+                print("Número do carro inexistente!")
+        except:
+            print("Digite apenas números!")
+    else:
+        print("Lista está vazia!")
     input("\n*** ENTER PARA VOLTAR AO MENU ***")
 
 def listaTudo():
@@ -113,14 +116,17 @@ def listaTudo():
 
 def listaEspecifico():
     os.system('cls')
-    try:
-        print ("Nº de carros na lista:",len(listCarros))
-        num=input("Digite o número do carro para mostrar: ")
-        if (int(num) <= len(listCarros)) and int(num) > 0:
-            print("\nCARRO ",int(num),":")
-        listCarros[int(num)-1].printa()
-    except:
-        print("Digite um número válido!")
+    if len(listCarros) > 0:
+        try:
+            print ("Nº de carros na lista:",len(listCarros))
+            num=input("Digite o número do carro para mostrar: ")
+            if (int(num) <= len(listCarros)) and int(num) > 0:
+                print("\nCARRO ",int(num),":")
+            listCarros[int(num)-1].printa()
+        except:
+            print("Digite um número válido!")
+    else:
+        print("Lista está vazia!")
     input("\n*** ENTER PARA VOLTAR AO MENU ***")
 
 def excluiCarro():
@@ -137,7 +143,7 @@ def excluiCarro():
         print("Lista está vazia!")
     input("\n*** ENTER PARA VOLTAR AO MENU ***")
 
-listCarros=[]
+listCarros=[] #Cria uma lista vazia
 menu() #Executa o menu em loop
 
     
