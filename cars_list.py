@@ -17,8 +17,8 @@ class Carros:
             print("Ano........: ",self.ano)
 
 def menu():
-    opcao = 1
-    while (opcao != 6):
+    opcao = '1'
+    while (opcao != '6'):
         os.system('cls')
         print("1. Adicionar carros na lista;")
         print("2. Alterar dados de um carro;")
