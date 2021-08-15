@@ -36,8 +36,9 @@ def menu():
         elif (opcao == '4'):
             listaEspecifico()
         elif (opcao == '5'):
-            break
+            excluiCarro()
         elif (opcao == '6'):
+            print ("\n*** PROGRAMA ENCERRADO ***")
             break
         else:
             print("Digite um valor válido!")
@@ -69,6 +70,7 @@ def addCarro():
 
 def alteraCarro():
     os.system('cls')
+    print ("Nº de carros na lista:",len(listCarros))
     try:
         num=input("Digite o número do carro que deseja alterar: ")
         if (int(num) <= len(listCarros)) and int(num) > 0:
@@ -119,6 +121,20 @@ def listaEspecifico():
         listCarros[int(num)-1].printa()
     except:
         print("Digite um número válido!")
+    input("\n*** ENTER PARA VOLTAR AO MENU ***")
+
+def excluiCarro():
+    os.system('cls')
+    if len(listCarros) > 0:
+        print ("Nº de carros na lista:",len(listCarros))
+        try:
+            num=input("Digite o número do carro para excluir: ")
+            del listCarros[int(num)-1]
+            print("Carro excluído da lista!")
+        except:
+            print("Digite um número válido!")
+    else:
+        print("Lista está vazia!")
     input("\n*** ENTER PARA VOLTAR AO MENU ***")
 
 listCarros=[]
